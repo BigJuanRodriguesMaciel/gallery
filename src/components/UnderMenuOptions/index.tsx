@@ -11,7 +11,8 @@ export default function UnderMenuOptions({}: Props) {
         <AddCircleIcon
           sx={{ 
             fontSize: 50,
-            color: '#294958'
+            color: '#294958',
+            backgroundColor: '#F6B769'
           }}
         />
       </IconOptionPlus>

@@ -3,5 +3,5 @@ export const defaultTheme = {
   orange: '#F6B769',
   green: '#294958',
   gray: '#A3A3A3',
-  'default-bg': '#1B1B1B'
+  'default-bg': '#284957'
 }

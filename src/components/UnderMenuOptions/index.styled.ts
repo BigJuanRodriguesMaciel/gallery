@@ -5,17 +5,17 @@ export const MenuOptions = styled.div`
     width: 100vw;
     position: fixed;
     bottom: 0;
-    position: relative;
+    left: 0;
     display: flex;
     justify-content: center;
     vertical-align: center;
     align-items: middle;
-    :first-child{
-        position: absolute;
+    :nth-child(2){
+        bottom: 0;
         height: 10%;
         width: 100vw;
-        -webkit-backdrop-filter: blur(30px);
-        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
         z-index: 5;
     }
 `
@@ -26,7 +26,6 @@ export const IconOptionPlus = styled.div`
     vertical-align: middle;
     align-items: center;
     svg {
-        border: 3px solid ${(props) => props.theme['orange']};
         border-radius: 100%;
     }
 `
