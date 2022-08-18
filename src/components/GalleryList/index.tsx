@@ -4,11 +4,33 @@ import React, { useState } from 'react'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
 import { Card } from './index.styled';
 
-type Props = {}
+type Props = {
+    galleries: any
+}
 
-export default function GalleryList({}: Props) {
+type Image = {
+    id: string,
+    name: string,
+    createdAt: string,
+    url: string,
+}
 
-    const heights = [120, 150, 175, 200, 150, 130, 150, 130, 150, 130, 100, 150, 100, 100, 150, 150, 100, 150, 100, 150, 130, 150, 130, 150, 130, 100, 150, 100, 100, 150];
+type Gallery = {
+    id: string,
+    name: string,
+    createdAt: string,
+    images: Array<Image>
+}
+
+type GalleryItem = {
+        layer_photo: string,
+        createdAt: string,
+        gallery: Gallery
+        id: string
+}
+
+
+export default function GalleryList({galleries}: Props) {
     const numberToHeight = [100, 150, 200, 250];
     const getHeight = () => {
         const postionInArray = Math.floor(Math.random() * 3)
@@ -22,17 +44,17 @@ export default function GalleryList({}: Props) {
 
     return (
         <Box sx={{ width: '100vw', minHeight: '100vh', backgroundColor: '#294958' }}>
-            <Box sx={{padding: '20px 0'}}>
-                <h2>Today s capture</h2>
-            </Box>
             {
                 showCards &&
                 <Masonry columns={2} spacing={2}>
-                    {heights.map((height, index) => (
+                    {galleries && galleries?.map((item:GalleryItem, index:number) => (
                         <Card key={index}>
                             <Box sx={{ height:getHeight }}>
+                                {/* <Box sx={{padding: '20px 0'}}>
+                                    <h2>{item.gallery.name}</h2>
+                                </Box> */}
                                 <div style={{
-                                    backgroundImage: `url('http://loremflickr.com/640/480')`,
+                                    backgroundImage: `url(${item.layer_photo})`,
                                     backgroundSize: 'cover',
                                     width: '100%',
                                     height: '100%',
