@@ -12,7 +12,7 @@ export default function UnderMenuOptions({}: Props) {
           sx={{ 
             fontSize: 50,
             color: '#294958',
-            backgroundColor: '#F6B769'
+            backgroundColor: '#F6B769',
           }}
         />
       </IconOptionPlus>

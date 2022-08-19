@@ -2,12 +2,13 @@ import { Masonry } from '@mui/lab'
 import { Box } from '@mui/material'
 import React, { useState } from 'react'
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
-import { Card, GalleryTitle } from '../styles/index.styled';
 import zIndex from '@mui/material/styles/zIndex';
 import Link from 'next/link';
+import { Card, GalleryTitle } from '../styles/index.styled';
+import axios from 'axios';
 
 type Props = {
-    galleries: any
+    images: any
 }
 
 type Image = {
@@ -32,27 +33,27 @@ type GalleryItem = {
 }
 
 
-export default function GalleryList({galleries}: Props) {
+export default function ImageList({images}: any) {
     const numberToHeight = [150, 200, 250, 300, 350];
     const getHeight = () => {
         const postionInArray = Math.floor(Math.random() * 3)
         return numberToHeight[postionInArray]
     }
 
+    console.log(`ffsc .`, images)
+
     return (
         <Box sx={{ width: '100vw', minHeight: '100vh', backgroundColor: '#294958' }}>
+            <h1>{images?.gallery?.name}</h1>
             {
-                galleries &&
+                images &&
                 <Masonry columns={2} spacing={2}>
-                    {galleries && galleries?.map((item:GalleryItem, index:number) => (
-                        <Link href={`/galeria/${item.gallery.name.replace(' ','-')}/${item.id}`} key={index}>
+                    {images && images?.gallery?.images.map((item:any, index:number) => (
+                        <>
                             <Card>
                                 <Box sx={{ height:getHeight, position: 'relative' }}>
-                                    <GalleryTitle>
-                                        <h2>{item.gallery.name}</h2>
-                                    </GalleryTitle>
                                     <div style={{
-                                        backgroundImage: `url(${item.layer_photo})`,
+                                        backgroundImage: `url(${item.url})`,
                                         backgroundSize: 'cover',
                                         width: '100%',
                                         height: '100%',
@@ -74,7 +75,7 @@ export default function GalleryList({galleries}: Props) {
                                     </div>
                                 </Box>
                             </Card>
-                        </Link>
+                        </>
                     ))}
                 </Masonry>
             }

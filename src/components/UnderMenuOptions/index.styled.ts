@@ -18,7 +18,7 @@ export const MenuOptions = styled.div`
         backdrop-filter: blur(10px);
         z-index: 5;
     }
-`
+    `
 
 export const IconOptionPlus = styled.div`
     display: flex;
